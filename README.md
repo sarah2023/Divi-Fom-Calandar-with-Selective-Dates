@@ -12,9 +12,9 @@ This project demonstrates how I customized a Divi form using **jQuery UI Datepic
 - Added styling to visually gray out unavailable days
 
 ## Technologies
-- HTML
-- CSS
-- JavaScript (jQuery UI)
+#HTML
+#CSS
+#JavaScript (jQuery UI)
 
 ## Demo
 ![screenshot](<img width="1366" height="607" alt="image" src="https://github.com/user-attachments/assets/63b8f8f8-64b9-4ab1-9897-152550b41f62" />
