@@ -1,0 +1,58 @@
+<!-- Load jQuery UI Datepicker CSS -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+<!-- Load jQuery UI JS -->
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+<script>
+jQuery(document).ready(function($) {
+    function initCalendar() {
+        var $dateField = $('#et_pb_contact_date_1'); // Your actual field ID
+        if ($dateField.length === 0) {
+            console.warn('Date input not found.');
+            return;
+        }
+        if (typeof $dateField.datepicker === 'function') {
+            $dateField.datepicker({
+                dateFormat: 'dd-mm-yy', // Change to mm/dd/yy if you prefer
+                minDate: 0, // Prevent past dates
+                showAnim: 'fadeIn',
+                beforeShowDay: function(date) {
+                    var day = date.getDay();
+                    // Disable Tuesday (2) and Wednesday (3)
+                    return [(day !== 2 && day !== 3)];
+                }
+            });
+        } else {
+            console.error('jQuery UI Datepicker is not loaded.');
+        }
+    }
+
+    initCalendar();
+
+    // If form is loaded dynamically, re-init
+    new MutationObserver(initCalendar).observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+});
+</script>
+
+<style>
+/* Optional styling to match Divi */
+.ui-datepicker {
+    font-size: 14px;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+.ui-datepicker td a {
+    text-align: center;
+}
+/* Gray out disabled days */
+.ui-datepicker-unselectable .ui-state-disabled {
+    background: #f5f5f5 !important;
+    color: #ccc !important;
+    cursor: not-allowed !important;
+}
+</style>
